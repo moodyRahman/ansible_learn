@@ -43,3 +43,7 @@ services:
   shigechi-3: 
     <<: *common
     container_name: shigechi-3
+
+  shigechi-4: 
+    <<: *common
+    container_name: shigechi-4
