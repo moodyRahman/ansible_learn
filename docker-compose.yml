@@ -33,17 +33,21 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./sshd_config:/config/sshd/sshd_config
+    hostname: shigechi-1
 
 
   shigechi-2: 
     <<: *common
     container_name: shigechi-2
+    hostname: shigechi-2
 
 
   shigechi-3: 
     <<: *common
     container_name: shigechi-3
+    hostname: shigechi-3
 
   shigechi-4: 
     <<: *common
     container_name: shigechi-4
+    hostname: shigechi-4
