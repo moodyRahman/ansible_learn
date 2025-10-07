@@ -19,9 +19,10 @@ services:
       - ./roles:/ansible/roles/
       - ./playbook:/ansible/playbook/
       - ./keys:/ansible/keys
+      - ./ansible.cfg:/ansible/ansible.cfg
 
   shigechi-1: &common
-    image: linuxserver/openssh-server
+    image: moody/managed_server:latest
     container_name: shigechi-1
     restart: unless-stopped
     env_file: ".env"
