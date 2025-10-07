@@ -12,3 +12,10 @@ stop:
 
 start: 
 	docker compose up -d
+
+restart:
+	docker compose down --timeout 0
+	docker compose up -d
+
+login:
+	docker exec -it cmoon bash
