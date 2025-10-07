@@ -1,0 +1,4 @@
+plugin: ansible.builtin.rest
+url: http://127.0.0.1:5000
+compose:
+  ansible_host: inventory_hostname

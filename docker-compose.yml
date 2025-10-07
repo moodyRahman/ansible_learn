@@ -1,0 +1,47 @@
+services:
+
+  ansible:
+    image: moody/cmoon:latest
+    container_name: cmoon
+    restart: unless-stopped
+    environment:
+      - PUBLIC_KEY=${PUBLIC_KEY}
+      - USER_NAME=${USER_NAME}
+    volumes:
+      - ./inventory:/ansible/inventory/
+      - ./roles:/ansible/roles/
+      - ./playbook:/ansible/playbook/
+      - ./keys:/ansible/keys/
+
+  shigechi-1:
+    image: linuxserver/openssh-server
+    container_name: shigechi-1
+    restart: unless-stopped
+    env_file: ".env"
+    environment:
+      - PUBLIC_KEY=${PUBLIC_KEY}
+      - USER_NAME=${USER_NAME}
+    volumes:
+      - ./sshd_config:/config/sshd/sshd_config
+
+
+  shigechi-2:
+    image: linuxserver/openssh-server
+    container_name: shigechi-2
+    restart: unless-stopped
+    env_file: ".env"
+    environment:
+      - PUBLIC_KEY=${PUBLIC_KEY}
+    volumes:
+      - ./sshd_config:/config/sshd/sshd_config
+
+
+  shigechi-3:
+    image: linuxserver/openssh-server
+    container_name: shigechi-3
+    restart: unless-stopped
+    env_file: ".env"
+    environment:
+      - PUBLIC_KEY=${PUBLIC_KEY}
+    volumes:
+      - ./sshd_config:/config/sshd/sshd_config
