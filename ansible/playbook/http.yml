@@ -1,0 +1,24 @@
+# install httpd
+
+- name: http_book
+  hosts: all
+  tasks: 
+    - name: Install lighttpd
+      become: yes
+      community.general.apk:
+        name: lighttpd
+        state: latest
+
+    - name: Add test index.html
+      become: yes
+      ansible.builtin.copy:
+        dest: /var/www/localhost/htdocs/index.html
+        content: "<h1>Hello from Ansible on Alpine!</h1>"
+
+    - name: Start lighttpd manually
+      become: yes
+      ansible.builtin.shell: |
+        pkill lighttpd || true
+        lighttpd -f /etc/lighttpd/lighttpd.conf &
+      args:
+        executable: /bin/sh
