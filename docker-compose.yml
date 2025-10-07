@@ -1,5 +1,12 @@
 services:
 
+  inventory-api:
+    image: moody/inventory_server:latest
+    container_name: cmoon_inventory
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
   ansible:
     image: moody/cmoon:latest
     container_name: cmoon
