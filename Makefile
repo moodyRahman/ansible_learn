@@ -17,5 +17,5 @@ restart:
 	docker compose down --timeout 0
 	docker compose up -d
 
-login:
+login: start	
 	docker exec -it cmoon bash
