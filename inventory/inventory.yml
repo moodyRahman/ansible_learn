@@ -1,4 +1,10 @@
-plugin: ansible.builtin.rest
-url: http://cmoon_inventory
-compose:
-  ansible_host: inventory_hostname
+all:
+  hosts:
+    shigechi-1:
+      ansible_host: shigechi-1
+    shigechi-2:
+      ansible_host: shigechi-2
+    shigechi-3:
+      ansible_host: shigechi-3
+    shigechi-4:
+      ansible_host: shigechi-4
