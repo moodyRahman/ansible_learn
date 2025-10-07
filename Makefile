@@ -1,14 +1,14 @@
 
-inventory_server: ./inventory_api_image/Dockerfile
-	docker build -t moody/inventory_server:latest -f inventory_api_image/Dockerfile .;
+inventory_server: ./images/inventory_node.Dockerfile
+	docker build -t moody/inventory_server:latest -f ./images/inventory_node.Dockerfile .;
 	docker compose up -d
 
-control_server: ./control_node_image/Dockerfile
-	docker build -t moody/cmoon:latest -f ./control_node_image/Dockerfile .
+control_server: ./images/control_node.Dockerfile
+	docker build -t moody/cmoon:latest -f ./images/control_node.Dockerfile .
 	docker compose up -d
 
-managed_server: ./managed_node_image/Dockerfile
-	docker build -t moody/managed_server:latest -f managed_node_image/Dockerfile .
+managed_server: ./images/managed_node.Dockerfile
+	docker build -t moody/managed_server:latest -f ./images/managed_node.Dockerfile .
 
 stop:
 	docker compose down --timeout 0

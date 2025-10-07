@@ -15,11 +15,7 @@ services:
       - PUBLIC_KEY=${PUBLIC_KEY}
       - USER_NAME=${USER_NAME}
     volumes:
-      - ./inventory:/ansible/inventory/
-      - ./roles:/ansible/roles/
-      - ./playbook:/ansible/playbook/
-      - ./keys:/ansible/keys
-      - ./ansible.cfg:/ansible/ansible.cfg
+      - ./ansible_mounted:/ansible/
 
   shigechi-1: &common
     image: moody/managed_server:latest
