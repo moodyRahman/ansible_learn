@@ -15,7 +15,7 @@ services:
       - PUBLIC_KEY=${PUBLIC_KEY}
       - USER_NAME=${USER_NAME}
     volumes:
-      - ./ansible_mounted:/ansible/
+      - ./ansible/:/ansible/
 
   shigechi-1: &common
     image: moody/managed_server:latest
@@ -28,6 +28,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
+      - SUDO_ACCESS=true
     volumes:
       - ./sshd_config:/config/sshd/sshd_config
     hostname: shigechi-1
