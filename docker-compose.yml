@@ -11,9 +11,9 @@ services:
       - ./inventory:/ansible/inventory/
       - ./roles:/ansible/roles/
       - ./playbook:/ansible/playbook/
-      - ./keys:/ansible/keys/
+      - ./keys:/ansible/keys
 
-  shigechi-1:
+  shigechi-1: &common
     image: linuxserver/openssh-server
     container_name: shigechi-1
     restart: unless-stopped
@@ -21,27 +21,18 @@ services:
     environment:
       - PUBLIC_KEY=${PUBLIC_KEY}
       - USER_NAME=${USER_NAME}
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
     volumes:
       - ./sshd_config:/config/sshd/sshd_config
 
 
-  shigechi-2:
-    image: linuxserver/openssh-server
+  shigechi-2: 
+    <<: *common
     container_name: shigechi-2
-    restart: unless-stopped
-    env_file: ".env"
-    environment:
-      - PUBLIC_KEY=${PUBLIC_KEY}
-    volumes:
-      - ./sshd_config:/config/sshd/sshd_config
 
 
-  shigechi-3:
-    image: linuxserver/openssh-server
+  shigechi-3: 
+    <<: *common
     container_name: shigechi-3
-    restart: unless-stopped
-    env_file: ".env"
-    environment:
-      - PUBLIC_KEY=${PUBLIC_KEY}
-    volumes:
-      - ./sshd_config:/config/sshd/sshd_config
